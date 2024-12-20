@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Facts - Space Weather</title>
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                background: url('106826.jpg') no-repeat center center fixed;
+                background-size: cover;
+                color: white;
+            }
+
+            audio {
+                display: none;
+            }
+
+            #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:  #2b2b36;
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            }
+
+            #loading-gif {
+            width: 100px;
+            height: auto;
+            }
+
+            #loading-text {
+                margin-top: 10px;
+            }
+            #content1 {
+                display: none;
+            }
+
+            .title{
+                margin-top: 100px;
+                margin-bottom: -60px;
+                text-align: center;
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+            }
+            .nav img {
+                width: 40px;
+                height: auto;
+                margin-right: 10px;
+            }
+            .nav h1 {
+                font-size: 1.3rem;
+                margin: 0;
+                color: white;
+                margin-right: 300px;
+            }
+            nav {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                background-color: #0d0e1b;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                padding: 15px 15px;
+                box-sizing: border-box;
+            }
+            nav a{
+                color: white;
+                padding: 5px 15px;
+                text-decoration: none;
+                text-align: center;
+                position: fixed;
+                font-size: 1rem;
+                display: flex;
+                float: right;
+                margin-left: 20px;
+                margin-right: 30px;
+            }
+
+            /* Navbar Links Styling */
+            .nav-links {
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links a {
+                color: white;
+                padding: 5px 15px;
+                text-decoration: none;
+                text-align: center;
+                font-size: 1rem;
+                display: inline-block;
+                margin-left: 20px;
+            }
+
+           .nav-links a:hover,
+            .nav-links a.active:hover {
+                color: #a678b7;
+                transform: scale(1.1);
+            }
+
+            .nav-links a {
+                list-style: none;
+                padding: 0 20px;
+                position: relative;
+            }
+
+            .nav-links a.active::after,
+            .nav-links a:hover::after {
+                content: "";
+                width: 30%;
+                height: 2px;
+                background: #a678b7;
+                position: absolute;
+                bottom: -4px;
+                left: 20px;
+                transform: 0.5s ease;
+            }
+
+            .container_R1, .container_L1,
+            .container_R2, .container_L2,
+            .container_R3, .container_L3{
+                max-width: 1200px;
+                margin: 100px auto 20px;
+                padding: 20px;
+                background-color: white;
+                color: black;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+            }
+
+            .container_R1 img, .container_L1 img,
+            .container_R2 img, .container_L2 img,
+            .container_R3 img, .container_L3 img{
+                width: 500px;
+                height: auto;
+                border-radius: 10px;
+            }
+            .section_1 {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .section_1 .text_1 {
+                flex: 1;
+                text-align: justify; 
+            }
+
+            .section_1 h1{
+                color: rgb(66, 62, 62);
+            }
+            .section_1 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(66, 62, 62);
+                align-items: left; 
+            }
+
+            .section_1 p{
+                color: rgb(43, 54, 25);
+                font-size: 17px;
+            }
+
+            .section_2 {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .section_2 .text_2 {
+                flex: 1;
+                text-align: justify; 
+            }
+
+            .section_2 h1{
+                color: rgb(66, 62, 62);
+            }
+            .section_2 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(66, 62, 62);
+                align-items: left; /* Centered the underline */
+            }
+            .section_3 {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .section_3 .text_3 {
+                flex: 1;
+                text-align: justify; 
+            }
+
+            .section_3 h1{
+                color: rgb(66, 62, 62);
+            }
+            .section_3 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(66, 62, 62);
+                align-items: left; /* Centered the underline */
+            }
+
+            .section_4 {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .section_4 .text_4 {
+                flex: 1;
+                text-align: justify; 
+            }
+
+            .section_4 h1{
+                color: rgb(66, 62, 62);
+            }
+            .section_4 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(66, 62, 62);
+                align-items: left; /* Centered the underline */
+            }
+
+            .section_5 {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .section_5 .text_5 {
+                flex: 1;
+                text-align: justify; 
+            }
+
+            .section_5 h1{
+                color: rgb(66, 62, 62);
+            }
+            .section_5 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(66, 62, 62);
+                align-items: left; /* Centered the underline */
+            }
+
+            .section_6 {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .section_6 .text_6 {
+                flex: 1;
+                text-align: justify; 
+            }
+
+            .section_6 h1{
+                color: rgb(66, 62, 62);
+            }
+            .section_6 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(66, 62, 62);
+                align-items: left; /* Centered the underline */
+            }
+
+            .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id = "preloader">
+            <img src="Planet_load.gif" alt="Loading GIF" id="loading-gif">
+            <span id="loading-text">Loading</span>
+        </div>
+        <div id = "content1">
+        <!--Audio Element-->
+        <audio controls autoplay loop>
+            <source src="Key_.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <!--Header Section-->
+        <nav>
+            <div class = "nav">
+            <img src = "Planet.png" alt = "Planet_Logo" class = "logo">
+            <h1>Space Weather</h1>
+            </div>
+            <div class = "nav-links">                                                                              
+                <a href = "Home_Page.html" style = animation-delay:0.2s;>Home</a>
+                <a href = "Facts.html" class = "active">Facts</a>                    
+                <a href = "Effects.html">Effects</a>
+                <a href = "Measure.html">Measures</a>
+                <a href = "Contact_Us.html">Contact Us</a>        
+            </div>
+        </nav>
+        <div class = "title">
+            <h1><ins>The Facts Of the Space Weather.</ins></h1>
+        </div>
+        <section class = "container_R1">
+            <div class = "section_1">
+                <img src = "Sunspots.png" alt = "Sunspots">       
+                <div class = "text_1">                      
+                    <h1>Sunspots</h1>
+                    <p><strong>Sunspots are the dark regions seen on the 
+                        surface of the Sun as the image shown on 
+                        the right.<br>
+                        Sunspots are the locations of very large 
+                        eruptions in the photosphere.<br>
+                        This phenomenon may last more than a week.
+                        Sunspots are phenomena that always exist in 
+                        pairs or groups.<br>
+                        The activity of the sunspots seems to appear 
+                        and disappear according to a cycle that lasts 
+                        lasts 11 years known as the solar cycle.</strong>
+                    </p>
+                </div>  
+            </div>
+        </section>
+        <section class = "container_L2">
+            <div class = "section_2">    
+                <div class = "text_2">
+                    <h1>Prominence</h1>
+                    <p><strong> prominence is a huge loop or arched column 
+                        of glowing gases over the sunspot.<br>
+                        Prominences can reach heights of hundreds of 
+                        thousands of kilometres and may last for several 
+                        days or months.<br>
+                        Prominences that are very strong can throw out 
+                        matter from the Sun into space at speeds ranging 
+                        from 600km s^-1 to more than 1000km s^-1.</strong>
+                    </p>
+                </div>
+                <img src = "Prominence.png" alt = "Prominence">
+            </div>
+        </section>
+        <section class = "container_R2">
+            <div class = "section_3">
+                <img src = "Solar_Flares.png" alt = "Solar_Flares"> 
+                <div class = "text_3">
+                    <h1>Solar Flares</h1>
+                    <p><strong>A solar flare is a column of large amounts of charged 
+                        gases erupting from the Sun and often occurs near 
+                        sunspots.<br>
+                        Solar flares are strong and spectacullar explosions 
+                        of gases.<br>
+                        Solar flares attain their maximum brightness level 
+                        within a few seconds or minutes and then become dim 
+                        after a few minutes or hours. <br>
+                        Solar flares spout charged gas particles at high speeds 
+                        into outer space. <br>
+                        The light from solar flares which is at the speed or light 
+                        takes eight minutes to reach Earth while the charged gas 
+                        particles take tens of minutes.</strong>
+                    </p>                    
+                </div>
+            </div>
+        </section>
+        <section class = "container_L2">
+            <div class = "section_4">
+                <div class = "text_4">
+                    <h1>Coronal Mass Ejections</h1>
+                    <p><strong>A coronal mass ejection is a huge cloud of plasma that erupts 
+                        from the Sun and often occurs together with solar flares which 
+                        are huge and strong. <br>
+                        A coronal mass ejection is an ejection of magnetic gas particles.
+                        <br>
+                        The coronal mass ejection spouts magnetic particles at high 
+                        speeds into outer space and appears like an expanding cloud. <br>
+                        These magnetic particles from the coronal mass ejection take 
+                        three days to reach Earth.</strong>
+                    </p>                    
+                </div>
+                <img src = "Coronal_..gif" alt = "Coronal_Mass_Ejections">
+            </div>
+        </section>
+        <section class = "container_R3">
+            <div class = "section_5">
+                <img src = "Solar_Wind.png" alt = "Solar_Wind">
+                <div class = "text_5">
+                    <h1>Solar Wind</h1>
+                    <p><strong>Particles in plasma such as electrons, protons and alpha particles 
+                        that erupt from the Sun to outer space travel together at high 
+                        speeds known as solar wind.<br>
+                        Solar wind also carries the interplanetary magnetic field along 
+                        with it.<br>
+                        The speed of solar wind is supersonic with values ranging from 
+                        250 km s^-1 to 750 km s^-1. <br>
+                        However, the speed, temperature and density of the solar wind 
+                        changes along the course of its movement.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class = "container_L3">
+            <div class = "section_6">
+                    
+                <div class = "text_6">
+                    <h1>Solar Radiation Storm</h1>
+                    <p><strong> solar radiation storm occurs often after major eruptions on 
+                        the Sun when protons get launched at incredibly high speeds, 
+                        sometimes up to several 10.000 km/s. <br>
+                        These radiation storms can bridge the Sun-Earth distance in as 
+                        little time as 30 minutes and last for multiple days.</strong>
+                    </p>                   
+                </div>
+                <img src = "Radiation_.jpeg" alt = "Solar_Radiation_Storm">
+            </div>
+        </section>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Space Weather. All rights reserved.</p>
+        </div>
+        <script>
+            window.addEventListener("load", () => {
+            let loadingText = document.getElementById("loading-text");
+            let dots = 0;
+
+            // Animate loading dots
+            let loadingInterval = setInterval(() => {
+                dots = (dots + 1) % 4;  // Cycle between 0 to 3
+                loadingText.textContent = "Loading" + ".".repeat(dots);
+            }, 500);  // Update every 500ms
+
+            // Hide preloader after 3 seconds
+            setTimeout(() => {
+                clearInterval(loadingInterval);  // Stop animation
+                document.getElementById("preloader").style.display = "none";  // Hide preloader
+                document.getElementById("content1").style.display = "block";  // Show content
+            }, 3000);  // Wait 3 seconds
+        });
+        </script>
+    </body>
+</html>

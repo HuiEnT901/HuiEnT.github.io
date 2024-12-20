@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Effects - Space Weather</title>
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                background: url('106826.jpg') no-repeat center center fixed;
+                background-size: cover;
+                color: white;
+            }
+
+            audio {
+                display: none;
+            }
+
+            #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:  #2b2b36;
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            }
+
+            #loading-gif {
+            width: 100px;
+            height: auto;
+            }
+
+            #loading-text {
+                margin-top: 10px;
+            }
+            #content1 {
+                display: none;
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+            }
+            .nav img {
+                width: 40px;
+                height: auto;
+                margin-right: 10px;
+            }
+            .nav h1 {
+                font-size: 1.3rem;
+                margin: 0;
+                color: white;
+                margin-right: 300px;
+            }
+            nav {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                background-color: #0d0e1b;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                padding: 15px 15px;
+                box-sizing: border-box;
+            }
+            nav a{
+                color: white;
+                padding: 5px 15px;
+                text-decoration: none;
+                text-align: center;
+                position: fixed;
+                font-size: 1rem;
+                display: flex;
+                float: right;
+                margin-left: 20px;
+                margin-right: 30px;
+            }
+
+            /* Navbar Links Styling */
+            .nav-links {
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links a {
+                color: white;
+                padding: 5px 15px;
+                text-decoration: none;
+                text-align: center;
+                font-size: 1rem;
+                display: inline-block;
+                margin-left: 20px;
+            }
+
+           .nav-links a:hover,
+            .nav-links a.active:hover {
+                color: #a678b7;
+                transform: scale(1.1);
+            }
+
+            .nav-links a {
+                list-style: none;
+                padding: 0 20px;
+                position: relative;
+            }
+
+            .nav-links a.active::after,
+            .nav-links a:hover::after {
+                content: "";
+                width: 30%;
+                height: 2px;
+                background: #a678b7;
+                position: absolute;
+                bottom: -4px;
+                left: 20px;
+                transform: 0.5s ease;
+            }
+
+            .IntroE h2{
+            position: static;
+            color: #ffffff;
+            left: 50%;
+            text-align: center;
+            font-size: 30px;
+            margin: 0;
+            margin-top: 150px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            }
+
+            #_1container{
+                display: flex;
+                justify-content: center;
+            }
+
+            .container_1, .container_2{
+                width: 500px;
+                position: flex;
+                margin: 100px auto 20px;
+                margin-top: 50px;
+                padding: 20px;
+                background-color: rgb(191, 208, 239);
+                color: black;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+            }
+
+            #_2container{
+                display: flex;
+                justify-content: center;
+            }
+
+            .container_3, .container_4{
+                width: 500px;
+                position: flex;
+                margin: 100px auto 20px;
+                margin-top: 50px;
+                padding: 20px;
+                background-color: rgb(230, 202, 237);
+                color: black;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+            }
+
+            .container_1 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(42, 53, 88);
+                align-items: left; 
+            }
+
+            .container_2 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(25, 58, 59);
+                align-items: left; 
+            }
+
+            .container_3 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(43, 31, 69);
+                align-items: left; 
+            }
+
+            .container_4 h1::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: rgb(47, 36, 48);
+                align-items: left; 
+            }
+            .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "preloader">
+            <img src="Planet_load.gif" alt="Loading GIF" id="loading-gif">
+            <span id="loading-text">Loading</span>
+        </div>
+        <div id = "content1">
+        <!--Audio Element-->
+        <audio controls autoplay loop>
+            <source src="Key_.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <!--Header Section-->
+        <nav>
+            <div class = "nav">
+            <img src = "Planet.png" alt = "Planet_Logo" class = "logo">
+            <h1>Space Weather</h1>
+            </div>
+            <div class = "nav-links">                                                                              
+                <a href = "Home_Page.html" style = animation-delay:0.2s;>Home</a>
+                <a href = "Facts.html" >Facts</a>                    
+                <a href = "Effects.html" class = "active">Effects</a>
+                <a href = "Measure.html">Measures</a>
+                <a href = "Contact_Us.html">Contact Us</a>        
+            </div>
+        </nav>
+        <div class = "IntroE">
+            <h2>So.. What effects will the Space Weather bring to the Earth?</h2>
+        </div>
+        <div id = "_1container">
+            <div class = "container_1">
+                <h1>Radio blackout storm</h1>
+                <p>This type of storm is generated by electromagnetic energy
+                    such as light, ostly in wavelengths that are invisible to 
+                    human eyes. It is most likely to occur following a solar flare. 
+                    It takes light only eight minutes to reach Earth from the Sun,
+                    so the effects from this type of event are almost immediate. One 
+                    risk of a radio blackout is that radios are often used for emergency 
+                    communications, for instance, to direct people amid earthquake or hurricane.
+                </p>
+            </div>
+            <div class = "container_2">
+                <h1>Solar radiation storm</h1>
+                <p>A solar radiation storm emits a sea of very small, fast-moving charged 
+                    particles. At their accelerated speed, these particles carry lots of 
+                    energy and can permeate the magnetosphere and endanger astronauts and spacecraft
+                    in Earth's orbit. 
+                </p>
+            </div>
+        </div>
+        <div id = "_2container">
+            <div class = "container_3">
+                <h1>Geomagnetic Storm</h1>
+                <p>Within one to three days of a solar eruption, giant clouds of plasma, may reach 
+                    Earth's orbit, compressing the magnetosphere. The influx of charged particles 
+                    and electromagnetic fields rippling through Earth's magnetosphere can induce currents 
+                    in many important electrical systems on Earth's surface, including power grids.
+                </p>
+            </div>
+            <div class = "container_4">
+                <h1>Aurora</h1>
+                <p>An aurora, also commonly known as the northen lights, or southern lights.
+                    It is a natural light display in Earth's sky. Aurora are the result of disturbances 
+                    in the Earth's magnetosphere caused by the solar wind. Major disturbances result from 
+                    enchancements in the speed of the solar wind from coronal holes and coronal mass 
+                    ejections. These disturbances alter the trajectories of charged particles. The form 
+                    of aurora, occuring within bands around both polar regions, is also dependent on the amount 
+                    of acceleration imparted to the precipitating particles.
+                </p>
+            </div>
+        </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Space Weather. All rights reserved.</p>
+        </div>
+        <script>
+            window.addEventListener("load", () => {
+            let loadingText = document.getElementById("loading-text");
+            let dots = 0;
+
+            // Animate loading dots
+            let loadingInterval = setInterval(() => {
+                dots = (dots + 1) % 4;  // Cycle between 0 to 3
+                loadingText.textContent = "Loading" + ".".repeat(dots);
+            }, 500);  // Update every 500ms
+
+            // Hide preloader after 3 seconds
+            setTimeout(() => {
+                clearInterval(loadingInterval);  // Stop animation
+                document.getElementById("preloader").style.display = "none";  // Hide preloader
+                document.getElementById("content1").style.display = "block";  // Show content
+            }, 3000);  // Wait 3 seconds
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Home - Space Weather</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('106826.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        audio {
+            display: none;
+        }
+
+        #header h1 {
+            color: white;
+            margin-left: 10px;
+        }
+
+        /* Navbar container */
+        #header .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0d0e1b;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 20px;
+            box-sizing: border-box;
+        }
+
+        /* Move the logo to the top-right */
+        #header .logo-container {
+            margin-left: auto; /* Pushes logo to the right */
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Styling for the logo */
+        #header .logo {
+            width: 40px;
+            height: auto;
+        }
+
+        /* Navbar links container */
+        #header .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        #header .nav-links a {
+            color: white;
+            padding: 5px 15px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1rem;
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        #header .nav-links a:hover,
+        #header .nav-links a.active:hover {
+            color: #a678b7;
+            transform: scale(1.1);
+        }
+
+        #header .nav-links a {
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        #header .nav-links a.active::after,
+        #header .nav-links a:hover::after {
+            content: "";
+            width: 30%;
+            height: 2px;
+            background: #a678b7;
+            position: absolute;
+            bottom: -4px;
+            left: 20px;
+            transform: 0.5s ease;
+        }
+
+        #content h1 {
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 110px;
+            margin-bottom: -20px;
+        }
+
+        #content a {
+            color: rgb(136, 209, 234);
+            text-decoration: none;
+            padding: 0.5px;
+        }
+
+        #content p {
+            position: center;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+            top: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Audio Element-->
+    <audio controls autoplay loop>
+        <source src="Key_.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <!--Header Section-->
+    <nav id="header">
+        <div class="nav">
+            <!-- Title on Left -->
+            <h1>Space Weather</h1>
+            
+            <!-- Logo on the top-right -->
+            <div class="logo-container">
+                <img src="Planet.png" alt="Planet_Logo" class="logo">
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+            <a href="Home_Page.html" class="active">Home</a>
+            <a href="Facts.html">Facts</a>
+            <a href="Effects.html">Effects</a>
+            <a href="News.html">News</a>
+            <a href="Measure.html">Measures</a>
+            <a href="Contact_Us.html">Contact Us</a>
+        </div>
+    </nav>
+
+    <section id="content">
+        <h1>Welcome to Space Weather</h1>
+        <br>
+        <p>where we explore the dynamic and fascinating interactions between<br>
+            the Sun and Earth's atmosphere. Space weather, driven by solar winds,<br>
+            solar flares, and coronal mass ejections, can influence everything<br> 
+            from satellite communications to power grids. Stay informed on how these<br>
+            cosmic events impact our planet and how scientists are working to predict<br>
+            and mitigate their effects.</p>
+        <p>We would like to show you about some <a href="Facts.html">Facts</a>, <a href="Effects.html">Effects,</a> and <a href="News.html">latest news</a> about Space Weather.</p>
+    </section>
+</body>
+
+</html>
