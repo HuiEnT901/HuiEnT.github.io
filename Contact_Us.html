@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Home - Space Weather</title>
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+                background: url('106826.jpg') no-repeat center center fixed;
+                background-size: cover;
+                color: white;
+            }
+
+            audio {
+                display: none;
+            }
+
+            #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:  #2b2b36;
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            }
+
+            #loading-gif {
+            width: 100px;
+            height: auto;
+            }
+
+            #loading-text {
+                margin-top: 10px;
+            }
+            #content1 {
+                display: none;
+            }
+
+            .title{
+                margin-top: 100px;
+                margin-bottom: -60px;
+                text-align: center;
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+            }
+            .nav img {
+                width: 40px;
+                height: auto;
+                margin-right: 10px;
+            }
+            .nav h1 {
+                font-size: 1.3rem;
+                margin: 0;
+                color: white;
+                margin-right: 300px;
+            }
+            nav {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                background-color: #0d0e1b;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+                padding: 15px 15px;
+                box-sizing: border-box;
+            }
+            nav a{
+                color: white;
+                padding: 5px 15px;
+                text-decoration: none;
+                text-align: center;
+                position: fixed;
+                font-size: 1rem;
+                display: flex;
+                float: right;
+                margin-left: 20px;
+                margin-right: 30px;
+            }
+
+            /* Navbar Links Styling */
+            .nav-links {
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links a {
+                color: white;
+                padding: 5px 15px;
+                text-decoration: none;
+                text-align: center;
+                font-size: 1rem;
+                display: inline-block;
+                margin-left: 20px;
+            }
+
+           .nav-links a:hover,
+            .nav-links a.active:hover {
+                color: #a678b7;
+                transform: scale(1.1);
+            }
+
+            .nav-links a {
+                list-style: none;
+                padding: 0 20px;
+                position: relative;
+            }
+
+            .nav-links a.active::after,
+            .nav-links a:hover::after {
+                content: "";
+                width: 30%;
+                height: 2px;
+                background: #a678b7;
+                position: absolute;
+                bottom: -4px;
+                left: 20px;
+                transform: 0.5s ease;
+            }
+
+            #form{
+                display: flex;
+                justify-content: space-between;
+                margin: 30px;
+                padding: 80px;
+                margin-top: 100px;
+                border: 1px solid white;
+                background-color: white;
+                border-radius: 10px;
+            }
+
+            #form form{
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #form form input,
+            #form form textarea{
+                width: 100%;
+                padding: 12px 15px;
+                outline: none;
+                margin-bottom: 20px;
+                border: 1px solid black;
+            }
+
+            #form form button{
+                background-color: rgb(33, 33, 58);
+                color: white;
+                border: 1px solid white;
+                border-radius: 10px;
+                font-size: 20px;
+                cursor: pointer;
+                transform: 0.3s ease;
+            }
+
+            #form form span{
+                color:rgb(33, 33, 58),;
+                font-size: 30px;
+            }
+
+            .social {
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            .social span {
+                display: block;
+                font-size: 20px;
+                font-weight: bold;
+                color: rgb(33, 33, 58);
+                margin: 10px 0;
+            }
+
+            .social p{
+                position: relative;
+                font-size: 15px;
+                font-weight: bold;
+                color: rgb(33, 33, 58);
+                text-align: center;
+                margin: auto;
+                margin-left: 50px;
+            }
+
+            .social div {
+                display: flex;
+                align-items: right;
+                justify-content: space-between;
+       
+                margin-bottom: 20px;
+            }
+
+            .social img {
+                width: 40px;
+                height: auto;
+                transition: transform 0.3s ease;
+                border-radius: 10px;
+            }
+
+            .social img:hover {
+                transform: scale(1.2);
+            }
+
+            .social a {
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 500;
+                color: rgb(33, 33, 58);
+                transition: color 0.3s ease;
+            }
+
+            .social a:hover {
+                color: rgb(92, 83, 127);
+            }
+
+            .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id = "preloader">
+            <img src="Planet_load.gif" alt="Loading GIF" id="loading-gif">
+            <span id="loading-text">Loading</span>
+        </div>
+        <div id = "content1">
+        <!--Audio Element-->
+        <audio controls autoplay loop>
+            <source src="Key_.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <!--Header Section-->
+        <nav>
+            <div class = "nav">
+            <img src = "Planet.png" alt = "Planet_Logo" class = "logo">
+            <h1>Space Weather</h1>
+            </div>
+            <div class = "nav-links">                                                                              
+                <a href = "Home_Page.html" style = animation-delay:0.2s;>Home</a>
+                <a href = "Facts.html" >Facts</a>                    
+                <a href = "Effects.html">Effects</a>
+                <a href = "Measure.html">Measures</a>
+                <a href = "Contact_Us.html" class = "active">Contact Us</a>        
+            </div>
+        </nav>
+        <div class = "title">
+            <h1><ins>Contact Us!</ins></h1>
+        </div>
+        <section id = "form">
+            <form action = "">
+                <span style = "color:rgb(33, 33, 58); font-size: 30px;
+                padding: -10px">LEAVE A MESSAGE</span>
+                <p style = "color:rgb(92, 83, 127); font-size: 20px">What can we improve more?</p>
+                <input type = "text" placeholder = "Your Name">
+                <input type = "text" placeholder = "E-mail">
+                <textarea name = "" id = "" cols = "30" row = "10" placeholder = "Your Message"></textarea>
+                <button class = "normal">Submit</button>
+            </form>
+            <div class = "social">
+                <span style = "color:rgb(33, 33, 58); font-size: 25px;">Follow Us!</span>
+                <div>
+                    <a href = "https://www.facebook.com"><img src = "facebook.png" alt = "Facebook"></a>
+                    <p>SpaceWeather_Official</p>
+                </div>
+                <div>
+                    <a href = "https://www.instagram.com"><img src = "instagram.png" alt = "Instagram"></a>
+                    <p>Space._Weather0fficial</p>
+                </div>
+                <div>
+                    <a href = "https://x.com"><img src = "twitter.png" alt = "X"></a>
+                    <p>Span_.Weather145672</p>
+                </div>
+                <div>
+                    <a href = "https://www.youtube.com"><img src = "youtube.png" alt = "YouTube"></a>
+                    <p>SubsToSpaceWeather145</p>
+                </div>
+            </div>
+        </section>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Space Weather. All rights reserved.</p>
+        </div>
+        <script>
+            window.addEventListener("load", () => {
+            let loadingText = document.getElementById("loading-text");
+            let dots = 0;
+
+            // Animate loading dots
+            let loadingInterval = setInterval(() => {
+                dots = (dots + 1) % 4;  // Cycle between 0 to 3
+                loadingText.textContent = "Loading" + ".".repeat(dots);
+            }, 500);  // Update every 500ms
+
+            // Hide preloader after 3 seconds
+            setTimeout(() => {
+                clearInterval(loadingInterval);  // Stop animation
+                document.getElementById("preloader").style.display = "none";  // Hide preloader
+                document.getElementById("content1").style.display = "block";  // Show content
+            }, 3000);  // Wait 3 seconds
+        });
+        </script>
+    </body>
+</html>
